@@ -8,14 +8,12 @@ class Animal {
     }
 }
 
-const dog = new Animal('dog');
-dog.speak();
-
 class Dog extends Animal{
     bark(){
+        super.speak()
         console.log(`${this.name} barks`)
     }
 }
 const myDog = new Dog("Rex")
-myDog.speak();
+// myDog.speak();
 myDog.bark();
