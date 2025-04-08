@@ -1,6 +1,8 @@
 class Animal {
-    constructor(name){
+    constructor(name,height,width=10){
         this.name = name;
+        this.height= height;
+        this.width= width;
     }
 
     speak(){
@@ -9,14 +11,15 @@ class Animal {
 }
 
 class Dog extends Animal{
-    constructor(name,breed) {
-        super(name);
+    constructor(name,breed,height,width) {
+        super(name,height,width);
         this.breed = breed;
     }
     bark(){
-        console.log(`${this.name} ${this.breed} barks`)
+        console.log(`${this.name} ${this.breed} barks, height:${this.height},weight:${this.width}`);
     }
 }
-const myDog = new Dog("Rocky","German Shepherd")
-// myDog.speak();
-myDog.bark();
+// const myDog = new Dog("Rocky","German Shepherd",78)
+// myDog.bark();
+const myCat = new Dog("Kitty","Hello Kitty",10)
+myCat.bark();
