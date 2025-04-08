@@ -1,11 +1,22 @@
 class Animal {
         name: string;
         height: number;
-        width: number;
-    constructor(name:string,height:number,width:number = 10) {
+        weight: number;
+    constructor(name:string,height:number,type:string ,weight:number ) {
         this.name = name;
         this.height = height;
-        this.width = width
+        this.weight = weight
+        if(weight !== undefined){
+            this.weight = weight;
+        }else {
+            if(type === 'cat'){
+                this.weight = 4
+            }else if(type === 'dog'){
+                this.weight = 18
+            }else{
+                this.weight = 5
+            }
+        }
     }
 
     speak():void{
@@ -15,14 +26,14 @@ class Animal {
 
 class Dog extends Animal{
     breed : string;
-    constructor(name:string,breed?:string,height?:number,width?:number) {
-        super(name,height,width);
+    constructor(name:string,breed?:string,height?:number,weight?:number) {
+        super(name,height,'cat',weight);
         this.breed = breed
     }
     bark():void{
         super.speak()
-        console.log(`${this.name} ${this.breed} barks height:${this.height} width: ${this.width}`);
+        console.log(`${this.name} ${this.breed} barks height:${this.height} width: ${this.weight}`);
     }
 }
-const myDog = new Dog('myDog','Lilliy',12,22);
+const myDog = new Dog('myDog','Lilliy',12);
 myDog.bark();
