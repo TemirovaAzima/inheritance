@@ -10,3 +10,12 @@ class Animal {
 
 const dog = new Animal('dog');
 dog.speak();
+
+class Dog extends Animal{
+    bark(){
+        console.log(`${this.name} barks`)
+    }
+}
+const myDog = new Dog("Rex")
+myDog.speak();
+myDog.bark();
