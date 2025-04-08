@@ -10,10 +10,15 @@ class Animal {
 }
 
 class Dog extends Animal{
+    breed : string;
+    constructor(name:string,breed?:string) {
+        super(name);
+        this.breed = breed
+    }
     bark():void{
         super.speak()
-        console.log(`${this.name} barks`);
+        console.log(`${this.name} ${this.breed} barks`);
     }
 }
-const myDog = new Dog('myDog');
+const myDog = new Dog('myDog','Lilliy');
 myDog.bark();

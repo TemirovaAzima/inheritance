@@ -9,11 +9,14 @@ class Animal {
 }
 
 class Dog extends Animal{
+    constructor(name,breed) {
+        super(name);
+        this.breed = breed;
+    }
     bark(){
-        super.speak()
-        console.log(`${this.name} barks`)
+        console.log(`${this.name} ${this.breed} barks`)
     }
 }
-const myDog = new Dog("Rex")
+const myDog = new Dog("Rocky","German Shepherd")
 // myDog.speak();
 myDog.bark();
