@@ -1,29 +1,25 @@
-const userLeft = false
-const userWatchingCatMeme = true
+const recordVideoOne = new Promise((resolve, reject) => {
+    resolve('Video 1 Recorded')
+})
+const recordVideoTwo = new Promise((resolve, reject) => {
+    resolve('Video 2 Recorded')
+})
+const recordVideoThree = new Promise((resolve, reject) => {
+    resolve('Video 3 Recorded')
+})
 
-function watchTutorialPromise(){
-    return new Promise((resolve,reject)=>{
-        if(userLeft){
-            reject({
-                name:"User left"
-            })
-        }else if(userWatchingCatMeme){
-            reject({
-                name:"User watching cat meme",
-                message:":( LOL"
-            })
-        }else{
-            resolve('Thumbs up and Subscribe')
-        }
-    })
-}
-// watchTutorialPromise((message)=>{
-//     console.log('Success' + message )
-// },(error) =>{
-//     console.log(` ${error.name} ${error.message}`)
+// Promise.all([
+//     recordVideoOne,
+//     recordVideoTwo,
+//     recordVideoThree,
+// ]).then((messages)=>{
+//     console.log(messages)
 // })
-watchTutorialPromise().then((message)=>{
-    console.log('Success' + message)
-}).catch((error)=>{
-    console.log(error.name + '  ' + error.message )
+
+Promise.race([
+    recordVideoOne,
+    recordVideoTwo,
+    recordVideoThree,
+]).then((message)=>{
+    console.log(message)
 })
