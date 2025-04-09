@@ -1,7 +1,31 @@
+type ApiResponse<Data> ={
+    data:Data,
+    isError:boolean,
+}
 
-const map = new Map<string,number>()
-map.set('sdf',2)
+// const response:ApiResponse<{name:string,age:number}> = {
+//     data: {
+//         name:'Kyle',
+//         age:28
+//     },
+//     isError: false,
+// }
 
+type UserResponse = ApiResponse<{ name:string,age:number }>
+type BlogResponse = ApiResponse<{ title:string }>
+type StatusResponse = ApiResponse<{ status:number }>
 
-const map2 = new Map([['sdf',2]])
-map2.set('sdf',2)
+const response:UserResponse = {
+    data: {
+        name:'Kyle',
+        age:28
+    },
+    isError: false,
+}
+
+const responseBlog:BlogResponse = {
+    data: {
+       title:'blog'
+    },
+    isError: false,
+}
