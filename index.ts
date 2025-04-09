@@ -1,21 +1,22 @@
-type ApiResponse<Data = {status:number}> ={
-    data:Data,
-    isError:boolean,
+type ApiResponse<Data extends object = { status: number }> = {
+    data: Data,
+    isError: boolean,
 }
-// const response:ApiResponse<> = {
-//     data: {
-//        status:404
-//     },
+// const response:ApiResponse<string> = {
+//     data:'jk',    // it gives an error
 //     isError: false,
 // }
 
 // const response:ApiResponse<{name:string}> = {
-//     data: {
-//        name:'bqsjhb'
-//     },
+//     data:{
+//         name:'jj'
+//     } , // it gives an error
 //     isError: false,
 // }
-const response:ApiResponse<string> = {
-    data:'jk',
+
+const response: ApiResponse = {
+    data: {
+        status: 200
+    }, // it gives an error
     isError: false,
 }
