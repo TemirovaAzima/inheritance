@@ -1,23 +1,24 @@
 const userLeft:boolean = false
 const userWatchingCatMeme:boolean = true
 
-function watchTutorialCallback(callback:(value:string)=>void,errorCallback:(reason:{name:string,message:string})=>void){
-    if(userLeft){
-        errorCallback({
-            name: 'User Left',
-            message: ':('
-        })
-    }else if (userWatchingCatMeme){
-        errorCallback({
-            name: 'User Watching Cat',
-            message: ':( LOL'
-        })
-    }else{
-        callback('Thumbs up and Subscribe')
-    }
+function watchTutorialPromise():Promise<string>{
+    return new Promise((resolve:(value:string)=>void, reject:(reason:{name:string,message?:string})=>void) => {
+        if(userLeft){
+            reject({
+                name:'User left',
+            })
+        }else if(userWatchingCatMeme){
+            reject({
+                name:'User Watching Cat Meme',
+                message: ':( LOL'
+            })
+        }else{
+            resolve('Thumbs up and subscribe')
+        }
+    })
 }
-watchTutorialCallback((message)=>{
-    console.log('Success:' + message)
-},(error)=>{
-    console.log(error.name+ '' + error.message)
+watchTutorialPromise().then((message:string)=>{
+    console.log(message)
+}).catch((err : {name:string,message?:string})=>{
+    console.log(`${err.name} ${err.message}`)
 })
