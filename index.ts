@@ -1,39 +1,16 @@
-class Animal {
-        name: string;
-        height: number;
-        weight: number;
-    constructor(name:string,height:number,type:string ,weight:number ) {
-        this.name = name;
-        this.height = height;
-        this.weight = weight
-        if(weight !== undefined){
-            this.weight = weight;
-        }else {
-            if(type === 'cat'){
-                this.weight = 4
-            }else if(type === 'dog'){
-                this.weight = 18
-            }else{
-                this.weight = 5
-            }
-        }
-    }
+let p:Promise<string> = new Promise(
+    (resolve:(value:string)=>void,reject:(reason:string)=>void)=>{
+    let a = 1 + 1
+    if(a === 2){
+        resolve('success')
 
-    speak():void{
-        console.log(`${this.name} makes a sound`);
+    }else{
+        reject('Failed')
     }
-}
+})
 
-class Dog extends Animal{
-    breed : string;
-    constructor(name:string,breed?:string,height?:number,weight?:number) {
-        super(name,height,'cat',weight);
-        this.breed = breed
-    }
-    bark():void{
-        super.speak()
-        console.log(`${this.name} ${this.breed} barks height:${this.height} width: ${this.weight}`);
-    }
-}
-const myDog = new Dog('myDog','Lilliy',12);
-myDog.bark();
+p.then((message:string)=>{
+    console.log('This is in the then' , message)
+}).catch((err:string)=>{
+    console.log('This in the catch',err)
+})
