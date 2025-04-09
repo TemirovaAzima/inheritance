@@ -1,14 +1,23 @@
-let p = new Promise((resolve,reject)=>{
-    let a = 1 + 1
-    if(a === 2){
-        resolve('success')
+const userLeft = false
+const userWatchingCatMeme = true
+function watchTutorialCallback(callback,errorCallback) {
+    if(userLeft){
+        errorCallback({
+            name:'User Left',
+            message:':('
+        })
+    }else if(userWatchingCatMeme){
+        errorCallback({
+            name: 'User Watching Cat Meme',
+            message: 'WebDevSimplified < Cat'
+        })
     }else{
-        reject('Failed')
+        callback('Thumbs up and Subscribe')
     }
-})
+}
 
-p.then((message)=>{
-    console.log(`this is in the then ` + message)
-}).catch(error=>{
-    console.error('This is in the catch ' + error)
+watchTutorialCallback((message)=>{
+    console.log('Success' + message )
+},(error) =>{
+    console.log(` ${error.name} ${error.message}`)
 })
